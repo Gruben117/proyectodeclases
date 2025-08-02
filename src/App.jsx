@@ -1,5 +1,4 @@
 
-function App() {
   /* 1. Arrow Function sin parámetros (10 pts) 
   Crea una función flecha que no reciba ningún parámetro y que, al llamarse, imprima en consola un saludo como "¡Bienvenido al sistema!".
   */
@@ -144,5 +143,11 @@ const evaluarEntrada =(edad, tieneTicket,esInvitado) => {
   }
 }
   
+const App = () => {
+  return (
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <h1 className="text-4xl font-bold text-purple-600">¡Que rollo mi Carlos?!</h1>
+    </div>
+  );
 }
 export default App;
