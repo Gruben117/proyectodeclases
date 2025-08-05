@@ -203,9 +203,9 @@ const evaluarPerfil = (nombre, edad, esEstudiante, calificacion) => {
 
     if (esEstudiante) {
       if (calificacion >= 8 && calificacion <= 10) {
-        return  nombre + " es un adolescente y estudiante sobresaliente";
+        return nombre + " es un adolescente y estudiante sobresaliente";
       } else {
-        return  nombre + " es un adolescente y estudiante,  sigue esforzandote";
+        return nombre + " es un adolescente y estudiante,  sigue esforzandote";
       }
     }
     else {
@@ -261,45 +261,101 @@ const verificarEdad = (edad) => {
   } else if (edad >= 18 && edad <= 64) {
     return "adulto";
   } else {
-    return "mayor";
+    return "adulto mayor";
   }
 }
 
-const tieneAcceso = (tipoUsuario, tieneInvitacion, VIP, normal, especial) => {
-  if (VIP || tieneInvitacion) {
+const tieneAcceso = (tipoUsuario, tieneInvitacion, edad) => {
+  if (tipoUsuario === "VIP" || tieneInvitacion) {
     return true;
-  } else if (normal && !tieneInvitacion) {
+  } if (tipoUsuario === "normal") {
     return false;
-  } else if (especial && edad >= 18) {
+  } if (tipoUsuario === "especial" && edad >= 18) {
     return true;
   }
 }
-
 const mostrarResultado = (nombre, edad, tipoUsuario, tieneInvitacion) => {
-  `Hola ${nombre} como eres un ${tipoUsuario} de  ${edad} años, tu acceso es: PERMITIDO`
-    `Hola ${nombre},lo sentimos, no puedes ingresar al evento.`
-
-  //aqui ya no le entedi
-
+  const acceso = tieneAcceso(tipoUsuario, tieneInvitacion, edad);
+  if (acceso) {
+    console.log(`Hola ${nombre}, como eres un ${tipoUsuario} de ${edad} años, tu acceso es: PERMITIDO`);
+  } else {
+    console.log(`Hola ${nombre}, lo sentimos, no puedes ingresar al evento.`);
+  }
 }
 
+/*🧪 Ejercicio 1 – Sistema de recomendación de comida
+🎯 Instrucciones:
+Crea una función flecha llamada recomendarComida que reciba 2 parámetros:
+
+horaDelDia 
+tieneHambre
+
+La función debe retornar un mensaje según la hora y el hambre:
+
+Si no tiene hambre → "No necesitas comer ahora"
+Si tiene hambre:
+  Si es entre 6 y 10 → "Desayuna algo ligero"
+  Si es entre 12 y 15 → "Es hora de comer"
+  Si es entre 18 y 21 → "Hora de cenar"
+  En cualquier otro horario → "Come algo ligero o una botana"
+
+Llama a la función con distintos valores y muestra el resultado*/
+
+const recomendarComida = (horaDelDia, tieneHambre) => {
+  if (!tieneHambre) {
+    return "No necesitas comer ahora";
+  } if (horaDelDia >= 6 && horaDelDia <= 10) {
+    return "Desayuna algo ligero";
+  } else if (horaDelDia >= 12 && horaDelDia <= 15) {
+    return "Es hora de comer";
+  } else if (horaDelDia >= 18 && horaDelDia <= 21) {
+    return "Hora de cenar";
+  } else {
+    return "Come algo ligero o una botana";
+  }
+}
+
+/*🧪 Ejercicio 2 – Calculadora de descuentos personalizada
+🎯 Instrucciones:
+Crea una función flecha llamada calcularPrecioFinal que reciba:
+
+precioOriginal 
+esClienteFrecuente
+cuponActivo 
+
+Lógica del descuento:
+
+Si el usuario es cliente frecuente y tiene cupón → 30% de descuento
+
+Si solo tiene cupón → 20%
+Si solo es cliente frecuente → 10%
+Si no tiene ninguno → precio completo
+La función debe retornar el precio final ya con el descuento aplicado.
+Muestra el resultado */
+
+  const calcularPrecioFinal = (precioOriginal, esClienteFrecuente, cuponActivo) => {
+  if (esClienteFrecuente && cuponActivo) {
+    return precioOriginal * 0.7;
+  }
+  if (cuponActivo) {
+    return precioOriginal * 0.8;
+  }
+  if (esClienteFrecuente) {
+    return precioOriginal * 0.9;
+  }
+  return precioOriginal;
+}
 
 const App = () => {
+ 
+console.log(calcularPrecioFinal(350,false,true));  
 
 
-  let name = "Emiliano";
-  let age = 12;
-  let student = true;
-  let grade = 9;
-
-
-  let result = evaluarPerfil(name,age,student,grade);
-  console.log(result);
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-     
-      <h1 className="text-4xl font-bold text-purple-600">{evaluarPerfil(name,age,student,grade)}</h1>
+
+      <h1 className="text-4xl font-bold text-purple-600">{ }</h1>
     </div>
   );
 }
