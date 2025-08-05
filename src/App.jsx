@@ -197,14 +197,19 @@ Llama a la función con tus propios datos y muestra el resultado en consola.*/
 
 const evaluarPerfil = (nombre, edad, esEstudiante, calificacion) => {
   if (edad < 13) {
-    return "Hola" + nombre + ",eres un niño, ¡disfruta tu infancia!";
-  } else if (edad >= 13 && edad <= 17 && esEstudiante) {
+    return "Hola " + nombre + ", eres un niño, ¡disfruta tu infancia!";
+  } 
+  else if (edad >= 13 && edad <= 17) {
+    if(esEstudiante){
+      
+    }
     if (calificacion >= 8 && calificacion <= 10) {
       return "Adolescente sobresaliente";
     } else {
       return "Adolescente, sigue esforzandote";
-    }
-  } if (edad >= 18) {
+    } 
+  } 
+  else if (edad >= 18) {
     if (esEstudiante && calificacion >= 9) {
       return "Joven universitario destacado";
     } else if (!esEstudiante) {
@@ -278,7 +283,12 @@ const mostrarResultado = (nombre, edad, tipoUsuario, tieneInvitacion) => {
 
 const App = () => {
 
-  evaluarPerfil("Carlos",12,false,10);
+ 
+  let pastel = evaluarPerfil("Carlos",15,false,10);
+  console.log(pastel);
+    
+  
+  
 
 
   return (
