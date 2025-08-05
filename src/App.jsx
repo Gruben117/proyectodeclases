@@ -198,24 +198,27 @@ Llama a la función con tus propios datos y muestra el resultado en consola.*/
 const evaluarPerfil = (nombre, edad, esEstudiante, calificacion) => {
   if (edad < 13) {
     return "Hola " + nombre + ", eres un niño, ¡disfruta tu infancia!";
-  } 
+  }
   else if (edad >= 13 && edad <= 17) {
-    if(esEstudiante){
-      
+
+    if (esEstudiante) {
+      if (calificacion >= 8 && calificacion <= 10) {
+        return  nombre + " es un adolescente y estudiante sobresaliente";
+      } else {
+        return  nombre + " es un adolescente y estudiante,  sigue esforzandote";
+      }
     }
-    if (calificacion >= 8 && calificacion <= 10) {
-      return "Adolescente sobresaliente";
-    } else {
-      return "Adolescente, sigue esforzandote";
-    } 
-  } 
+    else {
+      return nombre + " es un adolescente, que no estudia (NINI) ";
+    }
+  }
   else if (edad >= 18) {
     if (esEstudiante && calificacion >= 9) {
-      return "Joven universitario destacado";
+      return nombre + " es un joven universitario destacado";
     } else if (!esEstudiante) {
-      return "Adulto en formacion libre";
+      return nombre + " es un adulto en formacion libre";
     } else {
-      return "Perfil no clasificado";
+      return nombre + " tiene un perfil no clasificado";
     }
   }
 }
@@ -264,18 +267,18 @@ const verificarEdad = (edad) => {
 
 const tieneAcceso = (tipoUsuario, tieneInvitacion, VIP, normal, especial) => {
   if (VIP || tieneInvitacion) {
-    return true; 
+    return true;
   } else if (normal && !tieneInvitacion) {
     return false;
-  } else if (especial && edad >=18) {
+  } else if (especial && edad >= 18) {
     return true;
   }
 }
 
 const mostrarResultado = (nombre, edad, tipoUsuario, tieneInvitacion) => {
   `Hola ${nombre} como eres un ${tipoUsuario} de  ${edad} años, tu acceso es: PERMITIDO`
-  `Hola ${nombre},lo sentimos, no puedes ingresar al evento.` 
-  
+    `Hola ${nombre},lo sentimos, no puedes ingresar al evento.`
+
   //aqui ya no le entedi
 
 }
@@ -283,17 +286,20 @@ const mostrarResultado = (nombre, edad, tipoUsuario, tieneInvitacion) => {
 
 const App = () => {
 
- 
-  let pastel = evaluarPerfil("Carlos",15,false,10);
-  console.log(pastel);
-    
-  
-  
 
+  let name = "Emiliano";
+  let age = 12;
+  let student = true;
+  let grade = 9;
+
+
+  let result = evaluarPerfil(name,age,student,grade);
+  console.log(result);
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-purple-600">¡Que rollo mi Carlos?!</h1>
+     
+      <h1 className="text-4xl font-bold text-purple-600">{evaluarPerfil(name,age,student,grade)}</h1>
     </div>
   );
 }
