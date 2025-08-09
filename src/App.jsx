@@ -450,6 +450,97 @@ const mostrarResumen = (nivel, victorias, armaPrincipal, granadas, enemigos, dif
   const riesgo = calcularRiesgo(carga, enemigos, dificultad);
   const Victoria = estimarProbabilidadVictoria(spartanTipo, riesgo);
 }
+//=================================================================================================================
+const verificarEdad_ = (edad) => {
+  if (edad >= 18) {
+    console.log("Mayor de edad");
+  } else {
+    console.log("Menor de edad");
+  }
+}; //no va a imprimir nada por que aun no se le asigna una edad, simplemente creamos la funcion pero no tiene error
+
+const r = verificarEdad_(20);
+if (r >= 18) {
+  console.log("Acceso permitido");
+} else {
+  console.log("Acceso denegado");
+}
+// esta bien y va imprimir "Acceso permitido"
+//=================================================================================================================
+const calcularDescuento = (tipo) => {
+  if (tipo === "vip") {
+    console.log("Descuento 20%");
+  } else if (tipo === "normal") {
+    console.log("Descuento 10%");
+  } else {
+    console.log("Sin descuento");
+  }
+}; 
+const precio = 1000;
+const d = calcularDescuento("vip");
+const total = precio - (precio * d); 
+console.log("Total a pagar:", total);
+// no veo errores, y va imprimir "Total a pagar menos el descuento
+//=================================================================================================================
+
+const esPar = (n) => {
+  console.log(n % 2 === 0);
+}; 
+
+const esMayorQueDiez = (n) => {
+  return n > 10;
+};
+
+if (esPar(12) && esMayorQueDiez(5)) {
+  console.log("Condición A");
+} else if (esPar(3) || esMayorQueDiez(20)) {
+  console.log("Condición B");
+} else {
+  console.log("Condición C");
+}
+// se va imprimir Condicion A, no tiene error
+//=================================================================================================================
+let resultado = "PENDIENTE";
+
+const procesar = () => {
+  const interno = "OK";
+  console.log("Procesado:", interno);
+};
+
+resultado = procesar();
+
+if (resultado === "OK") {
+  console.log("Éxito");
+} else if (!resultado) {
+  console.log("Sin resultado");
+} else {
+  console.log("Otro estado");
+}
+// tiene error por que resultado se le asigna un valor que no es booleano por eso no se le puedo poner un NOT logico, y no tiene parametros,
+//=================================================================================================================
+const promedio = (a, b, c) => {
+  if (a >= 0 && b >= 0 && c >= 0) {
+    const p = (a + b + c) / 3;
+    console.log("Promedio:", p);
+    if (p >= 6) {
+      console.log("Aprobado");
+    } else {
+      console.log("Reprobado");
+    }
+  } else {
+    console.log("Datos inválidos");
+  }
+}; 
+
+const p1 = promedio(6, 6, 6);
+const aprobado = p1 >= 6 && true;
+if (aprobado) {
+  console.log("Certificado emitido");
+} else {
+  console.log("Certificado no disponible");
+}
+// el resultado es 6 entonces en true lo que significa que es aprobado y se va imprimir certificado emitido, el codigo no tiene errores 
+
 
 
 const App = () => {
