@@ -301,7 +301,7 @@ Si tiene hambre:
 
 Llama a la función con distintos valores y muestra el resultado*/
 
-const recomendarComida = (horaDelDia, tieneHambre) => {
+const recomendarComida0 = (horaDelDia, tieneHambre) => {
   if (!tieneHambre) {
     return "No necesitas comer ahora";
   } if (horaDelDia >= 6 && horaDelDia <= 10) {
@@ -333,7 +333,9 @@ Si no tiene ninguno → precio completo
 La función debe retornar el precio final ya con el descuento aplicado.
 Muestra el resultado */
 
-  const calcularPrecioFinal = (precioOriginal, esClienteFrecuente, cuponActivo) => {
+const calcularPrecioFinal = (precioOriginal, esClienteFrecuente, cuponActivo) => {
+  let hola = 13;
+  console.log(hola);
   if (esClienteFrecuente && cuponActivo) {
     return precioOriginal * 0.7;
   }
@@ -346,11 +348,124 @@ Muestra el resultado */
   return precioOriginal;
 }
 
+/*🧠 Contexto:
+Estás programando un sistema que analiza si un soldado Spartan puede entrar a una misión, con qué equipo, qué riesgo corre, y qué resultado probable tendrá.
+/*🔧 Funciones a construir (5 arrow functions)
+🔹 1. clasificarSpartan(nivel, victorias)
+Recibe:
+nivel (número del 1 al 100)
+victorias (cantidad de misiones ganadas)
+Lógica:
+Si nivel < 20 → "recluta"
+Si nivel >= 20 y < 50 y victorias >= 10 → "operativo"
+Si nivel >= 50 y victorias >= 25 → "élite"
+Si ninguna condición se cumple → "en entrenamiento"
+Retorna: un string con la categoría del Spartan.*/
+const clasificarSpartan = (nivel, victorias) => {
+  if (nivel < 20) {
+    return "recluta";
+  } else if (nivel >= 20 && nivel < 50 && victorias >= 10) {
+    return "operativo";
+  } else if (nivel >= 50 && victorias >= 25) {
+    return "elite";
+  } else {
+    return "en entrenamiento";
+  }
+}
+/*🔹 2. calcularCarga(spartanTipo, armaPrincipal, granadas)
+Recibe:
+spartanTipo (string: "recluta", "operativo", "élite", etc.
+armaPrincipal (string: "rifle", "plasma", "sniper", etc.)
+granadas (número)
+Lógica:
+Si el spartan es "élite" y lleva sniper y más de 3 granadas → "Carga pesada"
+Si es "operativo" y lleva rifle → "Carga estándar"
+Si es "recluta" o lleva menos de 2 granadas → "Carga ligera"
+Si ninguna condición se cumple → "Carga mixta"
+Retorna: un string con el tipo de carga.*/
+const calcularCarga = (spartanTipo, armaPrincipal, granadas) => {
+  if (spartanTipo === "elite" && armaPrincipal === "sniper" && granadas > 3) {
+    return "carga pesada";
+  } else if (spartanTipo === "operativo" && armaPrincipal === "rifle") {
+    return "carga estandar";
+  } else if (spartanTipo === "recluta" && granadas < 2) {
+    return "carga ligera";
+  } else {
+    return "carga mixta";
+  }
+}
+/*🔹 3. calcularRiesgo(carga, enemigos, dificultad)
+Recibe:
+carga (string)
+enemigos (número)
+dificultad (string: "fácil", "media", "legendaria")
+Lógica:
+Si hay más de 20 enemigos y la dificultad es "legendaria" → "Misión suicida"
+Si enemigos entre 10 y 20 y carga es "Carga ligera" → "Riesgo alto"
+Si dificultad es "fácil" y carga es "Carga pesada" → "Riesgo bajo"
+Todo lo demás → "Riesgo medio"
+Retorna: un string con el nivel de riesgo.*/
+const calcularRiesgo = (carga, enemigos, dificultad) => {
+  if (enemigos > 20 && dificultad === "legendaria") {
+    return "mision suicida";
+  } else if (enemigos > 9 && enemigos < 21 && carga === "carga ligera") {
+    return "riesgo alto";
+  } else if (dificultad === "facil" && carga === "carga pesada") {
+    return "riesgo bajo";
+  } else {
+    return "riesgo medio";
+  }
+}
+/*🔹 4. estimarProbabilidadVictoria(spartanTipo, riesgo)
+Recibe:
+spartanTipo y riesgo
+Lógica:
+Si es "élite" y riesgo "bajo" → retorna 90
+Si es "operativo" y riesgo "medio" → retorna 70
+Si es "recluta" y riesgo "alto" → retorna 30
+Si es "en entrenamiento" → retorna 10
+Cualquier otro caso → retorna 50
+Retorna: un número del 0 al 100 representando la % de victoria.*/
+const estimarProbabilidadVictoria = (spartanTipo, riesgo) => {
+  if (spartanTipo === "elite" && riesgo === "bajo") {
+    return 90;
+  } else if (spartanTipo === "operativo" && riesgo === "medio") {
+    return 70;
+  } else if (spartanTipo === "recluta" && riesgo === "alto") {
+    return 30;
+  } else if (spartanTipo === "en entrenamiento") {
+    return 10;
+  } else {
+    return 50;
+  }
+}
+/*🔹 5. mostrarResumen(nombre, nivel, victorias, armaPrincipal, granadas, enemigos, dificultad)
+Esta es la función principal que:
+Llama a las 4 funciones anteriores.
+Muestra un resumen en consola con:*/
+const mostrarResumen = (nivel, victorias, armaPrincipal, granadas, enemigos, dificultad, riesgo) => {
+  const tipo = clasificarSpartan(nivel, victorias);
+  const carga = calcularCarga(spartanTipo, armaPrincipal, granadas);
+  
+  const riesgo = calcularRiesgo(carga, enemigos, dificultad);
+  const Victoria = estimarProbabilidadVictoria(spartanTipo, riesgo);
+}
+
+
 const App = () => {
- 
-console.log(calcularPrecioFinal(350,false,true));  
 
+  let nombre = "Emile-A239";
+  let nivel = 26;
+  let victorias = 89;
+  let armaPrincipal = "rifle";
+  let carga = "carga pesada";
+  let granadas = 6;
+  let enemigos = 12;
+  let dificultad = "legendaria";
+  let riesgo = "bajo";
 
+  const halo = mostrarResumen(nivel, victorias, armaPrincipal, granadas, carga, enemigos, dificultad, riesgo)
+  console.log(halo);
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
