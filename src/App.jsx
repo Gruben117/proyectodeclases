@@ -24,8 +24,6 @@ Jugador: [nombre]
 Puntaje: [puntaje]
 Rango: [rango] */
 
-import { space } from "postcss/lib/list";
-
 /*const calcularPuntaje = (kills, muertes) => {
   if (kills > muertes) {
     return kills * 100 - muertes * 50;
@@ -961,20 +959,22 @@ Calcula el promedio de todas las puntuaciones.
 Si el promedio es mayor o igual a 75, imprime "Misión exitosa", de lo contrario "Misión fallida". */
 
 const puntuacion = () => {
-  let puntuacion_mision = [80, 95, 70, 100, 60];
+  let puntuacion_mision = [20, 23, 26, 34, 60, 43, 12, 31];
 
-  let mate = Math.max(...puntuacion_mision);
-  Math.max(puntuacion_mision[0],puntuacion_mision[1],puntuacion_mision[2],puntuacion_mision[3],puntuacion_mision[4]);
-  console.log(`Puntuacion maxima: ${mate}`);
+  let max_value = Math.max(...puntuacion_mision);
+  console.log(`Puntuacion maxima: ${max_value}`);
 
-  let matematica = Math.min(...puntuacion_mision);
-  console.log(`Promedio minimo: ${matematica}`);
 
-  let Promedio = Math.round(puntuacion_mision);
-  console.log(`Promedio: ${Promedio}`);
+  let min_value = Math.min(...puntuacion_mision);
+  console.log(`Puntuacion minima: ${min_value}`);
+  let suma_de_puntos = 0;
+  for (let i = 0; i < puntuacion_mision.length; i++) {
+    suma_de_puntos = suma_de_puntos + puntuacion_mision[i];
+  }
+  let promedio = suma_de_puntos / puntuacion_mision.length;
 
-  if (puntuacion_mision >= 75) {
-    console.log("Mision exitosa");
+  if (promedio >= 75) {
+    console.log(`Mision exitosa promedio: ${promedio}`);
   } else {
     console.log("Mision fallida");
   }
@@ -994,18 +994,9 @@ Recorre el array y muestra cada valor en una línea con el texto:
 const Vacio = () => {
   let Serie = 10;
   let tablaDelCinco = [];
-  for( let i = 10; i <= Serie; i++ ){
-   tablaDelCinco.push(5 * i);
-   console.log(`1 Tabla del cinco: ${tablaDelCinco[0]}`);
-   console.log(`2 Tabla del cinco: ${tablaDelCinco[1]}`);
-   console.log(`3 Tabla del cinco: ${tablaDelCinco[2]}`);
-   console.log(`4 Tabla del cinco: ${tablaDelCinco[3]}`);
-   console.log(`5 Tabla del cinco: ${tablaDelCinco[4]}`);
-   console.log(`6 Tabla del cinco: ${tablaDelCinco[5]}`);
-   console.log(`7 Tabla del cinco: ${tablaDelCinco[6]}`);
-   console.log(`8 Tabla del cinco: ${tablaDelCinco[7]}`);
-   console.log(`9 Tabla del cinco: ${tablaDelCinco[8]}`);
-   console.log(`10 Tabla del cinco: ${tablaDelCinco[9]}`);
+  for (let i = 1; i <= Serie; i++) {
+    tablaDelCinco.push(5 * i);
+    console.log(`Tabla del cinco: 5 x ${i} = ${tablaDelCinco[i - 1]}`);
   }
 }
 
@@ -1014,9 +1005,7 @@ const Vacio = () => {
 
 const App = () => {
 
-Vacio();
-
-
+  Vacio();
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
 
